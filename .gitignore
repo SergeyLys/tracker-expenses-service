@@ -1,0 +1,52 @@
+# Binaries and build artifacts
+/bin/
+/dist/
+/build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go coverage and profiling
+coverage.out
+coverage.html
+*.prof
+*.coverprofile
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.test.example
+*.pem
+*.key
+secrets/
+!.gitkeep
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# Local development configuration
+docker-compose.override.yml
+
+# Generated files (only if your project generates these)
+# Uncomment if applicable:
+# internal/generated/
+# gen/
