@@ -10,7 +10,7 @@ type BudgetPeriodController struct {
 }
 
 type GetAllBudgetsResponse struct {
-	budgets []BudgetPeriod `json:"budgets"`
+	Budgets []BudgetPeriod `json:"budgets"`
 }
 
 func NewBudgetPeriodController(service *BudgetPeriodService) *BudgetPeriodController {
@@ -20,10 +20,15 @@ func NewBudgetPeriodController(service *BudgetPeriodService) *BudgetPeriodContro
 }
 
 func (repository *BudgetPeriodController) GetAllBudgets(w http.ResponseWriter, r *http.Request) {
-	budgets := repository.service.GetAllBudgets()
+	err, budgets := repository.service.GetAllBudgets()
+
+	if err != nil {
+		w.WriteHeader(http.StatusOK)
+		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+	}
 
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(GetAllBudgetsResponse{
-		budgets: budgets,
+		Budgets: budgets,
 	})
 }

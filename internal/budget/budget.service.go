@@ -12,7 +12,7 @@ func NewBudgetPeriodService() *BudgetPeriodService {
 	return &BudgetPeriodService{}
 }
 
-func (repository *BudgetPeriodService) GetAllBudgets() []BudgetPeriod {
+func (repository *BudgetPeriodService) GetAllBudgets() (error, []BudgetPeriod) {
 	budgets := make([]BudgetPeriod, 0)
 
 	for i := range 5 {
@@ -28,5 +28,5 @@ func (repository *BudgetPeriodService) GetAllBudgets() []BudgetPeriod {
 		})
 	}
 
-	return budgets
+	return nil, budgets
 }
