@@ -19,8 +19,8 @@ func NewBudgetPeriodController(service *BudgetPeriodService) *BudgetPeriodContro
 	}
 }
 
-func (repository *BudgetPeriodController) GetAllBudgets(w http.ResponseWriter, r *http.Request) {
-	err, budgets := repository.service.GetAllBudgets()
+func (controller *BudgetPeriodController) GetAllBudgets(w http.ResponseWriter, r *http.Request) {
+	budgets, err := controller.service.GetAllBudgets()
 
 	if err != nil {
 		w.WriteHeader(http.StatusOK)
